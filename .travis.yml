@@ -15,4 +15,5 @@ script:
   - mix format --check-formatted --dry-run
   - mix credo --strict
   - mix sobellow --config
-  - mix coveralls.travis
+  - mix coveralls.json
+
