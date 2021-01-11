@@ -1,4 +1,7 @@
 # Blog
+[![Build Status](https://travis-ci.com/kadmohardy/Blog.svg?branch=main)](https://travis-ci.com/kadmohardy/Blog)
+
+[![codecov](https://codecov.io/gh/kadmohardy/Blog/branch/main/graph/badge.svg?token=FW8FZFZR7G)](https://codecov.io/gh/kadmohardy/Blog)
 
 To start your Phoenix server:
 
