@@ -11,8 +11,8 @@ defmodule Blog.Posts do
     |> Repo.insert()
   end
 
-  def update_post(id, attrs) do
-    get_post!(id)
+  def update_post(post, attrs) do
+    post
     |> Post.changeset(attrs)
     |> Repo.update()
   end

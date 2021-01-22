@@ -35,7 +35,7 @@ defmodule Blog.PostTest do
 
   test "update_post/2 with valid data" do
     post = post_fixture()
-    assert = {:ok, %Post{} = post} = Posts.update_post(post.id, @valid_post_update)
+    assert = {:ok, %Post{} = post} = Posts.update_post(post, @valid_post_update)
     assert post.title == "Phoenix Framework2"
   end
 
