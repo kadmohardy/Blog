@@ -56,7 +56,7 @@ defmodule BlogWeb.PostControllerTest do
       assert html_response(conn, 200) =~ "Editar Post"
     end
 
-    test "alterar post",  %{conn: conn, post: post} do
+    test "alterar post", %{conn: conn, post: post} do
       conn = put(conn, Routes.post_path(conn, :update, post), post: @valid_post_update)
 
       assert %{id: id} = redirected_params(conn)
@@ -66,12 +66,14 @@ defmodule BlogWeb.PostControllerTest do
       assert html_response(conn, 200) =~ "Phoenix Framework2"
     end
 
-    test "alterar post com dados invalidos",  %{conn: conn, post: post} do
-      conn = put(conn, Routes.post_path(conn, :update, post), post: %{title: nil, description: nil})
+    test "alterar post com dados invalidos", %{conn: conn, post: post} do
+      conn =
+        put(conn, Routes.post_path(conn, :update, post), post: %{title: nil, description: nil})
+
       assert html_response(conn, 200) =~ "fields are required"
     end
 
-    test "delete post",  %{conn: conn, post: post} do
+    test "delete post", %{conn: conn, post: post} do
       conn = delete(conn, Routes.post_path(conn, :delete, post))
       assert redirected_to(conn) == Routes.post_path(conn, :index)
 
@@ -82,5 +84,4 @@ defmodule BlogWeb.PostControllerTest do
   defp criar_post(_) do
     %{post: fixture(:post)}
   end
-
 end

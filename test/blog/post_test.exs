@@ -41,7 +41,7 @@ defmodule Blog.PostTest do
 
   test "delete_post/1" do
     post = post_fixture()
-    assert {:ok, %Post{} = post}  = Posts.delete_post(post.id)
+    assert {:ok, %Post{} = post} = Posts.delete_post(post.id)
     assert_raise Ecto.NoResultsError, fn -> Posts.get_post!(post.id) end
   end
 end
