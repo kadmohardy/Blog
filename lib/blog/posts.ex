@@ -3,7 +3,9 @@ defmodule Blog.Posts do
 
   def list_posts, do: Blog.Repo.all(Post)
 
-  def get_post!(id), do: Blog.Repo.get!(Post, id)
+  def get_post!(id), do: Repo.get!(Post, id)
+
+  def get_post_with_comments!(id), do: Repo.get!(Post, id) |> Repo.preload(:comments)
 
   def create_post(attrs \\ %{}) do
     %Post{}
