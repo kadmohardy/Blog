@@ -13,7 +13,8 @@ defmodule Blog.CommentsTest do
     def comment_fixture(attrs \\ %{}) do
       post = Blog.PostTest.post_fixture()
 
-      attrs_aux = attrs
+      attrs_aux =
+        attrs
         |> Enum.into(@valid_attrs)
 
       {:ok, comment} =
