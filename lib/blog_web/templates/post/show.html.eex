@@ -1,5 +1,4 @@
-<%= @post.title %>
-<%= @post.description %>
+
 <div class="card hoverable">
   <div class="card-content">
     <p class="grey-text right">Postado em: <%= @post.updated_at %></p>
@@ -12,3 +11,28 @@
     <% end %>
   </div>
 </div>
+
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s10">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+        <label for="icon_prefix2">First Name</label>
+      </div>
+      <div class="input-field col s2">
+        <a class="waves-effect waves-light btn">button</a>
+      </div>
+
+    </div>
+  </form>
+</div>
+<ul class="collection">
+  <li class="collection-item avatar">
+  <i class="material-icons circle red">play_arrow</i>
+    <span class="title">Title</span>
+    <p>
+        Second Line
+    </p>
+  </li>
+</ul>
