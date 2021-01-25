@@ -11,7 +11,7 @@ defmodule Blog.MixProject do
       description: "Blog project",
       source_url: @github_url,
       homepage_url: @github_url,
-      files: ~w(mix.exs lib LICENSE.md README.md, CHANGELOG.md),
+      files: ~w(mix.exs lib LICENSE.md README.md CHANGELOG.md),
       package: [
         maintainers: ["Kadmo Hardy"],
         licenses: ["MIT"],
