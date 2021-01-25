@@ -1,9 +1,13 @@
 defmodule Blog.Posts do
+  @moduledoc false
+
   alias Blog.{Posts.Post, Repo}
 
   def list_posts, do: Blog.Repo.all(Post)
 
-  def get_post!(id), do: Blog.Repo.get!(Post, id)
+  def get_post!(id), do: Repo.get!(Post, id)
+
+  def get_post_with_comments!(id), do: Repo.get!(Post, id) |> Repo.preload(:comments)
 
   def create_post(attrs \\ %{}) do
     %Post{}

@@ -1,5 +1,4 @@
-<%= @post.title %>
-<%= @post.description %>
+
 <div class="card hoverable">
   <div class="card-content">
     <p class="grey-text right">Postado em: <%= @post.updated_at %></p>
@@ -12,3 +11,28 @@
     <% end %>
   </div>
 </div>
+
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s10">
+        <i class="material-icons prefix">mode_edit</i>
+        <textarea id="comment" class="materialize-textarea"></textarea>
+        <label for="comment">Criar um comentário</label>
+      </div>
+      <div class="input-field col s2">
+        <a class="waves-effect waves-light btn" id="btn-comment">Comentar</a>
+      </div>
+
+    </div>
+  </form>
+</div>
+<ul class="collection">
+
+</ul>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    window.createSocket(<%= @post.id %>)
+  })
+</script>
