@@ -54,10 +54,42 @@ let socket = new Socket("/socket", {params: {token: window.userToken}})
 // Finally, connect to the socket:
 socket.connect()
 
-// Now that you are connected, you can join channels with a topic:
-let channel = socket.channel("comments:2", {})
-channel.join()
-  .receive("ok", resp => { console.log("Joined successfully", resp) })
-  .receive("error", resp => { console.log("Unable to join", resp) })
+const createSocket = (post_id) => {
+  // Now that you are connected, you can join channels with a topic:
+  let channel = socket.channel(`comments:${post_id}`, {})
+  channel.join()
+    .receive("ok", resp => {
+        getComments(resp.comments)
+      })
+    .receive("error", resp => { console.log("Unable to join", resp) })
 
-export default socket
+  channel.on(`comments:${post_id}:new`, includeComment)
+
+  document.getElementById("btn-comment").addEventListener("click", () => {
+    const content = document.getElementById("comment").value
+    channel.push("comment:add", { content: content })
+    document.getElementById("comment").value = ""
+  });
+}
+
+function includeComment(event) {
+  document.querySelector(".collection").innerHTML += comment_template(event.comment)
+}
+
+function getComments(comments) {
+  const commentsList = comments.map(comment => {
+    return comment_template(comment)
+  })
+  document.querySelector(".collection").innerHTML = commentsList.join('')
+}
+
+function comment_template(comment) {
+  return `
+    <li class="collection-item avatar">
+    <i class="material-icons circle red">play_arrow</i>
+      <span class="title">Title</span>
+      <p>${comment.content}</p>
+    </li>`;
+}
+
+window.createSocket = createSocket
