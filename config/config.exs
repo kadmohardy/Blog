@@ -33,8 +33,8 @@ config :ueberauth, Ueberauth,
   ]
 
 config :ueberauth, Ueberauth.Strategy.Google.OAuth,
-  client_id: "937785463454-2ics1ujoiht6in24n6u58i2bpbnufvi5.apps.googleusercontent.com",
-  client_secret: "si1PErMf5VoR5QuU7kWjVzaV"
+  client_id: System.get_env("GOOGLE_CLIENT_ID"),
+  client_secret: System.get_env("GOOGLE_CLIENT_SECRET")
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
