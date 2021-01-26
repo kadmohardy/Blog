@@ -8,7 +8,9 @@ defmodule Blog.Posts.Post do
     field :title, :string
     field :description, :string
 
+    belongs_to :user, Blog.Accounts.User
     has_many :comments, Blog.Comments.Comment
+
     timestamps()
   end
 

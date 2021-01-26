@@ -4,6 +4,12 @@ defmodule BlogWeb.AuthController do
   plug Ueberauth
   alias Blog.Accounts
 
+  def logout(conn, _) do
+    conn
+    |> configure_session(drop: true)
+    |> redirect(to: Routes.page_path(conn, :index))
+  end
+
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, %{"provider" => provider}) do
     user = %{
       token: auth.credentials.token,
@@ -13,6 +19,8 @@ defmodule BlogWeb.AuthController do
       image: auth.info.image,
       provider: provider
     }
+
+    IO.inspect(user)
 
     case Accounts.create_user(user) do
       {:ok, user} ->
@@ -26,7 +34,5 @@ defmodule BlogWeb.AuthController do
         |> put_flash(:error, "Algo deu errado!")
         |> redirect(to: Routes.page_path(conn, :index))
     end
-
-    render(conn, "index.html")
   end
 end
