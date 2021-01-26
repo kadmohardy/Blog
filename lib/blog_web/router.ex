@@ -7,12 +7,21 @@ defmodule BlogWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug BlogWeb.Plug.SetUser
   end
 
   scope "/", BlogWeb do
     pipe_through :browser
     resources "/posts", PostController
     get "/", PageController, :index
+  end
+
+  scope "/auth", BlogWeb do
+    pipe_through :browser
+
+    get "/logout", AuthController, :logout
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
   end
 
   # Enables LiveDashboard only for development
