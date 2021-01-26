@@ -41,8 +41,8 @@ defmodule Blog.AccountsTest do
     end
 
     test "list_users/0 returns all users" do
-      user = user_fixture()
-      assert Accounts.list_users() |> Enum.count() == 2
+    user_fixture()
+      assert Accounts.list_users() |> Enum.count() == 3
     end
 
     test "get_user!/1 returns the user with given id" do

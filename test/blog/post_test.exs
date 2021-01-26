@@ -31,14 +31,14 @@ defmodule Blog.PostTest do
   test "create_post/1 with valid data" do
     user = Blog.Accounts.get_user!(1)
 
-    assert = {:ok, %Post{} = post} = Posts.create_post(user, @valid_post)
+    {:ok, %Post{} = post} = Posts.create_post(user, @valid_post)
     assert post.title == "Phoenix Framework"
     assert post.description == "Lorem"
   end
 
   test "update_post/2 with valid data" do
     post = post_fixture()
-    assert = {:ok, %Post{} = post} = Posts.update_post(post, @valid_post_update)
+    {:ok, %Post{} = post} = Posts.update_post(post, @valid_post_update)
     assert post.title == "Phoenix Framework2"
   end
 
