@@ -1,4 +1,5 @@
 defmodule BlogWeb.Plug.RequireAuth do
+  @moduledoc false
   use BlogWeb, :controller
   alias Blog.Accounts
 

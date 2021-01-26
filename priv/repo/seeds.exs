@@ -32,6 +32,7 @@ user_2 = %{
   token:
     "ya29.a0AfH6SMDcZ2rcYQbHjFt1dLARU75m2IxnwA5lM210eRPn33U_2QbEOIZgWbAshUB4hTCz_giGE3V7AN4p5EIEE8rfB4shSTLWITll-tS1uHRIvOv1rx713pB9BNIDqIudYaiAHq1mXtxztKmTugy3NkMrJDFz87XdD6DNHWmorzA"
 }
+
 post = %{title: "Phoenix Framework", description: "teste 1"}
 
 {:ok, user} = Accounts.create_user(user)

@@ -23,7 +23,7 @@ defmodule Blog.AccountsTest do
       token: "some updated token"
     }
     @invalid_attrs %{
-      email: nil,
+      email: "",
       first_name: nil,
       image: nil,
       last_name: nil,
@@ -41,7 +41,7 @@ defmodule Blog.AccountsTest do
     end
 
     test "list_users/0 returns all users" do
-    user_fixture()
+      user_fixture()
       assert Accounts.list_users() |> Enum.count() == 3
     end
 
@@ -63,6 +63,11 @@ defmodule Blog.AccountsTest do
     test "create_user/1 with invalid data returns error changeset" do
       assert {:error, %Ecto.Changeset{}} = Accounts.create_user(@invalid_attrs)
     end
+
+    # test "create_user/1 with invalid data returns error datacase" do
+    #   assert {:error, changeset} = Accounts.create_user(@invalid_attrs)
+    #   assert ["can't be blank"] in errors_on(changeset).provider
+    # end
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
