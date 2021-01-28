@@ -77,6 +77,7 @@ function includeComment(event) {
 }
 
 function getComments(comments) {
+  console.log(comments)
   const commentsList = comments.map(comment => {
     return comment_template(comment)
   })
@@ -87,7 +88,7 @@ function comment_template(comment) {
   return `
     <li class="collection-item avatar">
     <i class="material-icons circle red">play_arrow</i>
-      <span class="title">Title</span>
+      <span class="title">${comment.user.email}</span>
       <p>${comment.content}</p>
     </li>`;
 }
