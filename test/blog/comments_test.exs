@@ -12,6 +12,7 @@ defmodule Blog.CommentsTest do
 
     def comment_fixture(attrs \\ %{}) do
       post = Blog.PostTest.post_fixture()
+      user = Blog.Accounts.get_user!(1)
 
       attrs_aux =
         attrs
@@ -19,7 +20,7 @@ defmodule Blog.CommentsTest do
 
       {:ok, comment} =
         post.id
-        |> Comments.create_comment(attrs_aux)
+        |> Comments.create_comment(user.id, attrs_aux)
 
       comment
     end
@@ -36,7 +37,8 @@ defmodule Blog.CommentsTest do
 
     test "create_comment/1 with valid data creates a comment" do
       post = Blog.PostTest.post_fixture()
-      assert {:ok, %Comment{} = comment} = Comments.create_comment(post.id, @valid_attrs)
+      user = Blog.Accounts.get_user!(1)
+      assert {:ok, %Comment{} = comment} = Comments.create_comment(post.id, user.id, @valid_attrs)
       assert comment.content == "some content"
     end
 

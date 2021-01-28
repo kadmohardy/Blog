@@ -87,7 +87,7 @@ function getComments(comments) {
 function comment_template(comment) {
   return `
     <li class="collection-item avatar">
-    <i class="material-icons circle red">play_arrow</i>
+      <img src=${comment.user.image} alt="" class="circle">
       <span class="title">${comment.user.email}</span>
       <p>${comment.content}</p>
     </li>`;
