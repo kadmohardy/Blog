@@ -1,7 +1,6 @@
 defmodule BlogWeb.Plug.RequireAuth do
   @moduledoc false
   use BlogWeb, :controller
-  alias Blog.Accounts
 
   def init(_), do: nil
 
