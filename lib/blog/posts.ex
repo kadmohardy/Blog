@@ -12,6 +12,7 @@ defmodule Blog.Posts do
       Repo.all(Post)
     end
   end
+
   def get_post!(id), do: Repo.get!(Post, id)
 
   def get_post_with_comments!(id), do: Repo.get!(Post, id) |> Repo.preload(comments: [:user])
